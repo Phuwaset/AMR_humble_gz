@@ -1,6 +1,6 @@
 # BCR Bot
 
-https://github.com/blackcoffeerobotics/bcr_bot/assets/13151010/0fc570a3-c70c-415b-8222-b9573d5911c8
+https://github.com/blackcoffeerobotics/amr_mtt/assets/13151010/0fc570a3-c70c-415b-8222-b9573d5911c8
 
 ## About
 
@@ -28,7 +28,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ### Source Build
 
 ```bash
-catkin build --packages-select bcr_bot
+catkin build --packages-select amr_mtt
 ```
 
 ### Binary Install
@@ -41,17 +41,17 @@ sudo apt-get install ros-noetic-bcr-bot
 
 To launch the robot in Gazebo,
 ```bash
-roslaunch bcr_bot gazebo.launch
+roslaunch amr_mtt gazebo.launch
 ```
 To view in rviz,
 ```bash
-roslaunch bcr_bot rviz.launch
+roslaunch amr_mtt rviz.launch
 ```
 ### Configuration
 
 The launch file accepts multiple launch arguments,
 ```bash
-roslaunch bcr_bot gazebo.launch 
+roslaunch amr_mtt gazebo.launch 
 	camera_enabled:=True \
 	two_d_lidar_enabled:=True \
 	position_x:=0.0 \
@@ -59,11 +59,11 @@ roslaunch bcr_bot gazebo.launch
 	orientation_yaw:=0.0 \
 	odometry_source:=world \
 	world_file:=small_warehouse.world \
-	robot_namespace:="bcr_bot"
+	robot_namespace:="amr_mtt"
 ```
 **Note:** To use stereo_image_proc with the stereo images excute following command: 
 ```bash
-ROS_NAMESPACE=bcr_bot/stereo_camera rosrun stereo_image_proc stereo_image_proc
+ROS_NAMESPACE=amr_mtt/stereo_camera rosrun stereo_image_proc stereo_image_proc
 ```
 
 ## Humble + Classic (Ubuntu 22.04)
@@ -85,7 +85,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ### Source Build
 
 ```bash
-colcon build --packages-select bcr_bot
+colcon build --packages-select amr_mtt
 ```
 
 ### Binary Install
@@ -99,17 +99,17 @@ sudo apt-get install ros-humble-bcr-bot
 
 To launch the robot in Gazebo,
 ```bash
-ros2 launch bcr_bot gazebo.launch.py
+ros2 launch amr_mtt gazebo.launch.py
 ```
 To view in rviz,
 ```bash
-ros2 launch bcr_bot rviz.launch.py
+ros2 launch amr_mtt rviz.launch.py
 ```
 ### Configuration
 
 The launch file accepts multiple launch arguments,
 ```bash
-ros2 launch bcr_bot gazebo.launch.py \
+ros2 launch amr_mtt gazebo.launch.py \
 	camera_enabled:=True \
 	two_d_lidar_enabled:=True \
 	stereo_camera_enabled:=False \
@@ -118,11 +118,11 @@ ros2 launch bcr_bot gazebo.launch.py \
 	orientation_yaw:=0.0 \
 	odometry_source:=world \
 	world_file:=small_warehouse.sdf \
-	robot_namespace:="bcr_bot"
+	robot_namespace:="amr_mtt"
 ```
 **Note:** To use stereo_image_proc with the stereo images excute following command: 
 ```bash
-ros2 launch stereo_image_proc stereo_image_proc.launch.py left_namespace:=bcr_bot/stereo_camera/left right_namespace:=bcr_bot/stereo_camera/right
+ros2 launch stereo_image_proc stereo_image_proc.launch.py left_namespace:=amr_mtt/stereo_camera/left right_namespace:=amr_mtt/stereo_camera/right
 ```
 ## Humble + Fortress (Ubuntu 22.04)
 
@@ -143,7 +143,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ### Source Build
 
 ```bash
-colcon build --packages-select bcr_bot
+colcon build --packages-select amr_mtt
 ```
 
 ### Binary Install
@@ -157,18 +157,18 @@ sudo apt-get install ros-humble-bcr-bot
 
 To launch the robot in Gazebo,
 ```bash
-ros2 launch bcr_bot ign.launch.py
+ros2 launch amr_mtt ign.launch.py
 ```
 To view in rviz,
 ```bash
-ros2 launch bcr_bot rviz.launch.py
+ros2 launch amr_mtt rviz.launch.py
 ```
 
 ### Configuration
 
 The launch file accepts multiple launch arguments,
 ```bash
-ros2 launch bcr_bot ign.launch.py \
+ros2 launch amr_mtt ign.launch.py \
 	camera_enabled:=True \
 	stereo_camera_enabled:=False \
 	two_d_lidar_enabled:=True \
@@ -180,7 +180,7 @@ ros2 launch bcr_bot ign.launch.py \
 ```
 **Note:** To use stereo_image_proc with the stereo images excute following command: 
 ```bash
-ros2 launch stereo_image_proc stereo_image_proc.launch.py left_namespace:=bcr_bot/stereo_camera/left right_namespace:=bcr_bot/stereo_camera/right
+ros2 launch stereo_image_proc stereo_image_proc.launch.py left_namespace:=amr_mtt/stereo_camera/left right_namespace:=amr_mtt/stereo_camera/right
 ```
 
 ## Humble + Harmonic (Ubuntu 22.04)
@@ -202,25 +202,25 @@ rosdep install --from-paths src --ignore-src -r -y
 ### Build
 
 ```bash
-colcon build --packages-select bcr_bot
+colcon build --packages-select amr_mtt
 ```
 
 ### Run
 
 To launch the robot in Gazebo,
 ```bash
-ros2 launch bcr_bot gz.launch.py
+ros2 launch amr_mtt gz.launch.py
 ```
 To view in rviz,
 ```bash
-ros2 launch bcr_bot rviz.launch.py
+ros2 launch amr_mtt rviz.launch.py
 ```
 
 ### Configuration
 
 The launch file accepts multiple launch arguments,
 ```bash
-ros2 launch bcr_bot gz.launch.py \
+ros2 launch amr_mtt gz.launch.py \
 	camera_enabled:=True \
 	stereo_camera_enabled:=False \
 	two_d_lidar_enabled:=True \
@@ -233,9 +233,9 @@ ros2 launch bcr_bot gz.launch.py \
 **Note:** 
 1. To use stereo_image_proc with the stereo images excute following command: 
 ```bash
-ros2 launch stereo_image_proc stereo_image_proc.launch.py left_namespace:=bcr_bot/stereo_camera/left right_namespace:=bcr_bot/stereo_camera/right
+ros2 launch stereo_image_proc stereo_image_proc.launch.py left_namespace:=amr_mtt/stereo_camera/left right_namespace:=amr_mtt/stereo_camera/right
 ```
-2. Harmonic support is not available in the bcr_bot binaries yet.
+2. Harmonic support is not available in the amr_mtt binaries yet.
 
 **Warning:**  `gz-harmonic` cannot be installed alongside gazebo-classic (eg. gazebo11) since both use the `gz` command line tool.
 
@@ -243,7 +243,7 @@ ros2 launch stereo_image_proc stereo_image_proc.launch.py left_namespace:=bcr_bo
 
 ### Dependencies
 
-In addition to ROS2 Humble [Isaac Sim installation](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/index.html) with ROS2 extension is required. Remainder of bcr_bot specific dependencies can be installed with [rosdep](http://wiki.ros.org/rosdep)
+In addition to ROS2 Humble [Isaac Sim installation](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/index.html) with ROS2 extension is required. Remainder of amr_mtt specific dependencies can be installed with [rosdep](http://wiki.ros.org/rosdep)
 
 ```bash
 # From the root directory of the workspace. This will install everything mentioned in package.xml
@@ -253,7 +253,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ### Build
 
 ```bash
-colcon build --packages-select bcr_bot
+colcon build --packages-select amr_mtt
 ```
 
 ### Run
@@ -265,12 +265,12 @@ To launch the robot in Isaac Sim:
 - The following USDs are included in the package:
 	- `warehouse_scene.usd` - Warehouse scene with a robot.
 	- `scene.usd` - Scene with a robot in a empty world.
-	- `bcr_bot.usd` - Robot model that can be imported into any scene.
+	- `amr_mtt.usd` - Robot model that can be imported into any scene.
 	- `ActionGraphFull.usd` - Action graph for the robot to publish all the required topics.
 
 To view in rviz:
 ```bash
-ros2 launch bcr_bot rviz.launch.py
+ros2 launch amr_mtt rviz.launch.py
 ```
 NOTE: The command to run mapping and navigation is common between all versions of gazebo and Isaac sim see [here](#mapping-with-slam-toolbox).
 
@@ -282,29 +282,29 @@ NOTE: The command to run mapping is common between all versions of gazebo.
 
 To start mapping:
 ```bash
-ros2 launch bcr_bot mapping.launch.py
+ros2 launch amr_mtt mapping.launch.py
 ```
 
 Use the teleop twist keyboard to control the robot and map the area:
 ```bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/bcr_bot/cmd_vel
+ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/amr_mtt/cmd_vel
 ```
 
 To save the map:
 ```bash
-cd src/bcr_bot/config
+cd src/amr_mtt/config
 ros2 run nav2_map_server map_saver_cli -f bcr_map
 ```
 
-### Using Nav2 with bcr_bot
+### Using Nav2 with amr_mtt
 
 Nav2 is an open-source navigation package that enables a robot to navigate through an environment easily. It takes laser scan and odometry data, along with the map of the environment, as inputs.
 
 NOTE: The command to run navigation is common between all versions of gazebo and Isaac sim.
 
-To run Nav2 on bcr_bot:
+To run Nav2 on amr_mtt:
 ```bash
-ros2 launch bcr_bot nav2.launch.py
+ros2 launch amr_mtt nav2.launch.py
 ```
 
 ### Simulation and Visualization

@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <package format="2">
-	<name>bcr_bot</name>
+	<name>amr_mtt</name>
 	<version>1.0.2</version>
-	<description>bcr_bot</description>
+	<description>amr_mtt</description>
 
 	<maintainer email="gaurav@blackcoffeerobotics.com">Gaurav Gupta</maintainer>
 	<maintainer email="devanshu@blackcoffeerobotics.com">Devanshu Sharma</maintainer>
 	<maintainer email="angelo@blackcoffeerobotics.com">Angelo Antu</maintainer>
+	<maintainer email="s6703016411302@email.kmutnb.ac.th">Phuwaset Sibta</maintainer>
 	<license>Apache License 2.0</license>
 
 	<buildtool_depend>ament_cmake</buildtool_depend>

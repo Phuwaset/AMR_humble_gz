@@ -163,7 +163,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /bcr_bot/kinect_camera/points
+        Value: /amr_mtt/kinect_camera/points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -197,7 +197,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /bcr_bot/scan
+        Value: /amr_mtt/scan
       Use Fixed Frame: true
       Use rainbow: true
       Value: true

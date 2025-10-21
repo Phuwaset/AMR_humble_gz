@@ -8,7 +8,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     pkg_nav2_dir = get_package_share_directory('nav2_bringup')
-    pkg_bcr = get_package_share_directory('bcr_bot')
+    pkg_bcr = get_package_share_directory('amr_mtt')
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='True')
     autostart = LaunchConfiguration('autostart', default='True')
@@ -64,7 +64,7 @@ def generate_launch_description():
     )
 
     remapper_node = Node(
-        package='bcr_bot',
+        package='amr_mtt',
         executable='remapper.py',
         name='remapper',
         output='screen',

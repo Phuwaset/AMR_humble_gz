@@ -19,7 +19,7 @@ def generate_launch_description():
     isaac_sim = LaunchConfiguration('isaac_sim')
 
     # Process XACRO
-    xacro_path = os.path.join(get_package_share_directory('bcr_bot'), 'urdf', 'bcr_bot.xacro')
+    xacro_path = os.path.join(get_package_share_directory('amr_mtt'), 'urdf', 'amr_mtt.xacro')
     doc = get_xacro_to_doc(xacro_path, {"wheel_odom_topic": "odom"})
 
     # Nodes
@@ -37,7 +37,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', os.path.join(get_package_share_directory('bcr_bot'), 'rviz', 'entire_setup.rviz')]
+        arguments=['-d', os.path.join(get_package_share_directory('amr_mtt'), 'rviz', 'entire_setup.rviz')]
     )
 
     return LaunchDescription([

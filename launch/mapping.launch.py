@@ -8,7 +8,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     pkg_slam_toolbox_dir = get_package_share_directory('slam_toolbox')
-    pkg_bcr = get_package_share_directory('bcr_bot')
+    pkg_bcr = get_package_share_directory('amr_mtt')
 
     # Declare launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='True')

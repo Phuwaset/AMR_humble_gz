@@ -12,8 +12,8 @@ from launch.actions import AppendEnvironmentVariable
 def generate_launch_description():
     use_sim_time = LaunchConfiguration("use_sim_time", default=True)
 
-    bcr_bot_path = get_package_share_directory("bcr_bot")
-    world_file = LaunchConfiguration("world_file", default = join(bcr_bot_path, "worlds", "small_warehouse.sdf"))
+    amr_mtt_path = get_package_share_directory("amr_mtt")
+    world_file = LaunchConfiguration("world_file", default = join(amr_mtt_path, "worlds", "small_warehouse.sdf"))
     gz_sim_share = get_package_share_directory("ros_gz_sim")
 
     gz_sim = IncludeLaunchDescription(
@@ -24,8 +24,8 @@ def generate_launch_description():
         }.items()
     )
 
-    spawn_bcr_bot_node = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(join(bcr_bot_path, "launch", "bcr_bot_gz_spawn.launch.py")),
+    spawn_amr_mtt_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(join(amr_mtt_path, "launch", "amr_mtt_gz_spawn.launch.py")),
         launch_arguments={
             # Pass any arguments if your spawn.launch.py requires
         }.items()
@@ -35,14 +35,14 @@ def generate_launch_description():
 
         AppendEnvironmentVariable(
         name='GZ_SIM_RESOURCE_PATH',
-        value=join(bcr_bot_path, "worlds")),
+        value=join(amr_mtt_path, "worlds")),
 
         AppendEnvironmentVariable(
         name='GZ_SIM_RESOURCE_PATH',
-        value=join(bcr_bot_path, "models")),
+        value=join(amr_mtt_path, "models")),
 
         DeclareLaunchArgument("use_sim_time", default_value=use_sim_time),
         DeclareLaunchArgument("world_file", default_value=world_file),
         
-        gz_sim, spawn_bcr_bot_node
+        gz_sim, spawn_amr_mtt_node
     ])

@@ -12,14 +12,14 @@ from launch.actions import SetEnvironmentVariable
 from launch.actions import AppendEnvironmentVariable
 
 def generate_launch_description():
-    # Get bcr_bot package's share directory path
-    bcr_bot_path = get_package_share_directory('bcr_bot')
+    # Get amr_mtt package's share directory path
+    amr_mtt_path = get_package_share_directory('amr_mtt')
 
     # Retrieve launch configuration arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     
     
-    world_file = LaunchConfiguration("world_file", default = join(bcr_bot_path, 'worlds', 'small_warehouse.sdf'))
+    world_file = LaunchConfiguration("world_file", default = join(amr_mtt_path, 'worlds', 'small_warehouse.sdf'))
     
     # Include the Gazebo launch file
     gazebo_share = get_package_share_directory("gazebo_ros")
@@ -27,9 +27,9 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(join(gazebo_share, "launch", "gazebo.launch.py"))
     )
 
-    # spawing bcr_bot
-    spawn_bcr_bot_node = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(join(bcr_bot_path, "launch", "bcr_bot_gazebo_spawn.launch.py")),
+    # spawing amr_mtt
+    spawn_amr_mtt_node = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(join(amr_mtt_path, "launch", "amr_mtt_gazebo_spawn.launch.py")),
     )
 
     return LaunchDescription([
@@ -37,14 +37,14 @@ def generate_launch_description():
         
         AppendEnvironmentVariable(
         name='GAZEBO_MODEL_PATH',
-        value=join(bcr_bot_path, "models")),
+        value=join(amr_mtt_path, "models")),
 
         SetEnvironmentVariable(
         name='GAZEBO_RESOURCE_PATH',
-        value="/usr/share/gazebo-11:" + join(bcr_bot_path, "worlds")),
+        value="/usr/share/gazebo-11:" + join(amr_mtt_path, "worlds")),
         DeclareLaunchArgument('world', default_value = world_file),
         DeclareLaunchArgument('gui', default_value='true'),
         DeclareLaunchArgument('verbose', default_value='false'),
         DeclareLaunchArgument('use_sim_time', default_value = use_sim_time),
-        gazebo,spawn_bcr_bot_node
+        gazebo,spawn_amr_mtt_node
     ])
