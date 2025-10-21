@@ -1,4 +1,4 @@
-# BCR Bot
+<!-- # BCR Bot
 
 https://github.com/blackcoffeerobotics/amr_mtt/assets/13151010/0fc570a3-c70c-415b-8222-b9573d5911c8
 
@@ -315,4 +315,4 @@ ros2 launch amr_mtt nav2.launch.py
 	![](res/isaac.jpg) 
 
 3. Rviz (Depth camera) (small_warehouse World):
-	![](res/rviz.jpg)
+	![](res/rviz.jpg) -->
