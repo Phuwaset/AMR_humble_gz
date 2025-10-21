@@ -316,3 +316,20 @@ ros2 launch amr_mtt nav2.launch.py
 
 3. Rviz (Depth camera) (small_warehouse World):
 	![](res/rviz.jpg) -->
+
+
+source /opt/ros/humble/setup.bash
+source ~/amr_mtt/install/setup.bash
+
+ros2 launch amr_mtt ign.launch.py \
+  camera_enabled:=True \
+  stereo_camera_enabled:=False \
+  two_d_lidar_enabled:=True \
+  position_x:=0.0 \
+  position_y:=0.0 \
+  orientation_yaw:=0.0 \
+  odometry_source:=world \
+  world_file:=small_warehouse.sdf
+
+
+
