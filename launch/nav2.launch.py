@@ -20,7 +20,7 @@ def generate_launch_description():
         launch_arguments={
             'use_sim_time': use_sim_time,
             'autostart': autostart,
-            'map': os.path.join(pkg_bcr, 'config', 'bcr_map.yaml'),
+            'map': os.path.join(pkg_bcr, 'map', 'amr_mtt.yaml'),
             'params_file': os.path.join(pkg_bcr, 'config', 'nav2_params.yaml'),
             'package_path': pkg_bcr, 
         }.items()
@@ -52,7 +52,7 @@ def generate_launch_description():
         executable='map_server',
         name='map_server',
         output='screen',
-        parameters=[{'yaml_filename': os.path.join(pkg_bcr, 'config', 'bcr_map.yaml')}],
+        parameters=[{'yaml_filename': os.path.join(pkg_bcr, 'map', 'amr_mtt.yaml')}],
     )
 
     static_transform_publisher_node = Node(

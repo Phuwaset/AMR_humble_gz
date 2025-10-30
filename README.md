@@ -1,6 +1,6 @@
-<!-- # BCR Bot
+# amr_mtt project
 
-https://github.com/blackcoffeerobotics/amr_mtt/assets/13151010/0fc570a3-c70c-415b-8222-b9573d5911c8
+<!-- https://github.com/blackcoffeerobotics/amr_mtt/assets/13151010/0fc570a3-c70c-415b-8222-b9573d5911c8 -->
 
 ## About
 
@@ -318,6 +318,7 @@ ros2 launch amr_mtt nav2.launch.py
 	![](res/rviz.jpg) -->
 
 
+## Simulation with ROS2 Project AMR_MtT
 source /opt/ros/humble/setup.bash
 source ~/amr_mtt/install/setup.bash
 
@@ -330,6 +331,34 @@ ros2 launch amr_mtt ign.launch.py \
   orientation_yaw:=0.0 \
   odometry_source:=world \
   world_file:=small_warehouse.sdf
+
+
+
+map
+
+ros2 launch amr_mtt mapping.launch.py use_sim_time:=true
+
+ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/amr_mtt/cmd_vel
+
+save_map 
+
+cd src/amr_mtt/config
+ros2 run nav2_map_server map_saver_cli -f amr_mtt
+
+
+localization_launch
+
+source /opt/ros/humble/setup.bash
+source ~/amr_mtt/install/setup.bash
+
+ros2 launch nav2_bringup localization_launch.py \
+map:=$HOME/amr_mtt/src/amr_mtt/map/amr_mtt_map1.yaml \
+use_sim_time:=true
+
+
+
+ros2 launch amr_mtt nav2.launch.py use_sim_time:=true
+
 
 
 

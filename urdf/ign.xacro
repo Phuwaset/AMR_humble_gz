@@ -35,27 +35,26 @@
     <!-- ............................. ground truth .................................... -->
 
     <xacro:if value="${odometry_source == 'world'}">
-    <gazebo>
-        <plugin filename="libignition-gazebo6-odometry-publisher-system"
-            name="ignition::gazebo::systems::OdometryPublisher">
-            <odom_frame>odom</odom_frame>
-            <robot_base_frame>base_footprint</robot_base_frame>
-            <odom_topic>$(arg wheel_odom_topic)</odom_topic>
-            <tf_topic>/tf</tf_topic>
-            <dimensions>2</dimensions>
-            <odom_publish_frequency>10</odom_publish_frequency>
-        </plugin>
-    </gazebo>
+        <gazebo>
+            <plugin filename="libignition-gazebo6-odometry-publisher-system" name="ignition::gazebo::systems::OdometryPublisher">
+                <odom_frame>odom</odom_frame>
+                <robot_base_frame>base_footprint</robot_base_frame>
+                <odom_topic>$(arg wheel_odom_topic)</odom_topic>
+                <tf_topic>/tf</tf_topic>
+                <dimensions>2</dimensions>
+                <odom_publish_frequency>10</odom_publish_frequency>
+            </plugin>
+        </gazebo>
     </xacro:if>
 
     <!-- ........................... 2D LIDAR config ................................... -->
 
     <xacro:if value="$(arg two_d_lidar_enabled)">
-        <gazebo reference="two_d_lidar">
-            <sensor name='gpu_lidar' type='gpu_lidar'>
-                <topic>scan</topic>
+        <gazebo reference="L_F_Lidar_Link">
+            <sensor name='lidar_front' type='gpu_lidar'>
+                <topic>lidar_front/scan</topic>
                 <update_rate>${two_d_lidar_update_rate}</update_rate>
-                <ignition_frame_id>two_d_lidar</ignition_frame_id>
+                <gz_frame_id>L_F_Lidar_Link</gz_frame_id>
                 <lidar>
                     <scan>
                         <horizontal>
@@ -76,7 +75,38 @@
                         <stddev>0.001</stddev>
                     </noise>
                 </lidar>
-                <alwaysOn>1</alwaysOn>
+                <always_on>1</always_on>
+                <visualize>true</visualize>
+            </sensor>
+        </gazebo>
+
+        <!-- ====================== REAR LiDAR ======================== -->
+        <gazebo reference="R_B_Lidar_Link">
+            <sensor name='lidar_rear' type='gpu_lidar'>
+                <topic>lidar_rear/scan</topic>
+                <update_rate>${two_d_lidar_update_rate}</update_rate>
+                <gz_frame_id>R_B_Lidar_Link</gz_frame_id>
+                <lidar>
+                    <scan>
+                        <horizontal>
+                            <samples>${two_d_lidar_sample_size}</samples>
+                            <resolution>1</resolution>
+                            <min_angle>${radians(two_d_lidar_min_angle)}</min_angle>
+                            <max_angle>${radians(two_d_lidar_max_angle)}</max_angle>
+                        </horizontal>
+                    </scan>
+                    <range>
+                        <min>${two_d_lidar_min_range}</min>
+                        <max>${two_d_lidar_max_range}</max>
+                        <resolution>0.01</resolution>
+                    </range>
+                    <noise>
+                        <type>gaussian</type>
+                        <mean>0.0</mean>
+                        <stddev>0.001</stddev>
+                    </noise>
+                </lidar>
+                <always_on>1</always_on>
                 <visualize>true</visualize>
             </sensor>
         </gazebo>

@@ -5,8 +5,8 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument, GroupAction
-from launch.conditions import IfCondition, UnlessCondition
+from launch.actions import DeclareLaunchArgument
+from launch.conditions import UnlessCondition
 
 def get_xacro_to_doc(xacro_file_path, mappings):
     doc = xacro.parse(open(xacro_file_path))
@@ -38,6 +38,41 @@ def generate_launch_description():
         name='rviz2',
         output='screen',
         arguments=['-d', os.path.join(get_package_share_directory('amr_mtt'), 'rviz', 'entire_setup.rviz')]
+        # arguments=['-d', os.path.join(get_package_share_directory('amr_mtt'), 'rviz', 'blank_setup.rviz')]
+
+    )
+
+    dual_lidar_merger = Node(
+        package='dual_laser_merger',
+        executable='dual_laser_merger_node',
+        name='dual_laser_merger',
+        output='screen',
+        parameters=[{
+            'laser_1_topic': '/lidar_front/scan',
+            'laser_2_topic': '/lidar_rear/scan',
+            'merged_topic': '/merged',               
+            'merged_cloud_topic': '/merged_cloud',
+            'target_frame': 'base_link',
+            'publisher_qos_reliability': 'best_effort',  
+            'publish_rate': 100,
+            'angle_increment': 0.0043633,
+            'scan_time': 0.067,
+            'range_min': 0.05,
+            'range_max': 25.0,
+            'angle_min': -3.141592654,
+            'angle_max': 3.141592654,
+            'use_inf': False
+        }]
+    )
+    lidar_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='lidar_bridge',
+        arguments=[
+            '/lidar_front/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
+            '/lidar_rear/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan'
+        ],
+        output='screen'
     )
 
     return LaunchDescription([
@@ -59,5 +94,7 @@ def generate_launch_description():
         ),
         # Nodes
         robot_state_publisher,
-        rviz
+        rviz,
+        dual_lidar_merger,
+        lidar_bridge
     ])
